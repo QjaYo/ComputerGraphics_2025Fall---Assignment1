@@ -20,17 +20,17 @@
         ![image.png](attachment:c79a031c-ceb3-484d-ad4b-624c4c1f09d8:image.png)
         
 
-1. space 입력 처리
+3. space 입력 처리
 - Plain클래스에 bool active 변수를 둠
 - h/keyboard()에서 space가 입력되면 plain.active를 toggle함
 - h/idle()에서 plain.active = true일때만 g_time을 증가시키도록 함
 - g_time은 uniform변수 u_time을 통해 glsl로 넘겨지며, 위에서 언급한 파동함수의 가 됨
 - active = false이어서 시간 가 증가하지 않으면 위상변화가 일어나지 않게되어 파동이 멈추게 됨
-1. w 입력 처리
+4. w 입력 처리
     - Plain클래스에 bool wave 변수를 둠
     - h/keyboard()에서 space가 입력되면 plain.wave를 toggle함
     - wave는 uniform변수 plain_wave을 통해 vshader_plain.glsl로 넘겨지며, plain_wave = true일때만 파동 애니메이션을 활성화시키도록 함
-2. 1, 2 입력처리
+5. 1, 2 입력처리
     - Plain클래스에 div 변수를 둠
     - h/keyboard()에서 1,2가 입력되면 plain.modifyDiv() 함수를 통해
         - 1입력 시 div를 1 감소시킴
