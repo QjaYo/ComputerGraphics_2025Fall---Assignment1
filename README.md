@@ -17,7 +17,8 @@
 2. 파동 구현방법
     - 사인함수를 이용하되, 파동의 중심점에서 멀어질수록 감쇠계수를 곱해 진폭이 작아지도록 구현함
     - 아래는 glsl 에서 파동을 구현할 때 사용한 수식임
-        ![image.png](attachment:c79a031c-ceb3-484d-ad4b-624c4c1f09d8:image.png)
+      
+      <img src="./image/WaveFormula.png" width="400">
         
 
 3. space 입력 처리
@@ -42,13 +43,12 @@
 1. 평면의 모든 부분의 위상차 동일
     1. 문제
         
-        ![image.png](attachment:ecc61086-640b-4c3f-b74e-44d34d27f672:image.png)
-        
+        <img src="./image/WaveFormula_wrong.png" width="400">
         - 처음 파동을 구현할때는 위와 같이 사인함수 내부에 를 빼주지 않았음
         - 그러자 파동의 모든 지점의 위상이 같아져 버려서 아래 그림과 같은 파동이 만들어졌음
     2. 해결
         
-        ![image.png](attachment:a1e7098c-5939-49d4-a93c-65263125733d:image.png)
+        <img src="./image/WaveFormula_right.png" width="400">
         
         - 위의 식과 같이 사인함수 입력에 거리에 비례하는 값을 빼줘서 거리에 비례하여 위상차가 발생하도록 하여 해결함
             
@@ -65,19 +65,19 @@
 3. 흐릿한 색깔
     1. 문제
         
-        ![image.png](attachment:85d3ceb0-05c9-43f7-b15b-483784cc3d0e:image.png)
+        <img src="./image/WavingPlane.png" width="400">
         
         - 왼쪽(문제해결전), 오른쪽(문제해결후)
         - 위의 그림과 같이 처음 구현하였을때는 fshader에서
             
-            ![image.png](attachment:130c4631-cca2-41c7-8626-65310b7212bf:image.png)
+            <img src="./image/ColorMix_wrong.png" width="400">
             
             위와 같은 수식으로 색을 정하였는데, 왼쪽 사진처럼 주황/파랑색이 흐릿하게 나왔음
             
         - 앞에 계수를 붙여보니 [-1,1] 구간을 벗어나거나, 전체적으로 주황/파랑색을 띄게 되는 문제가 발생함
     2. 해결
         
-        ![image.png](attachment:a3ddb84d-d6a6-4599-bdff-2e4fee95f3f6:image.png)
+        <img src="./image/ColorMix_right.png" width="400">
         
         - 위와 같이 배합비율을 두배하고 [0,1] 구간으로 clamping 했더니 원하는 대로 더 진한 색감이 나왔음
 4. 회전행렬 중복 연산
@@ -92,12 +92,12 @@
 5. 추가구현
     - 마우스 스크롤로 확대 및 축소
         
-        ![image.png](attachment:e1a18353-c5fc-4af1-b374-caaaccc89a3d:image.png)
+        <img src="./image/ZoomInOut.png" width="400">
         
         - 이번 학기 수강중인 머신비전시스템 과목에서 초점거리와 확대 축소 관계에 대해 배움
         - 머신비전 시스템 강의자료
             
-            ![image.png](attachment:59d78758-f582-4517-9ae7-4f775e337014:image.png)
+            <img src="./image/PerspectiveModel.png" width="400">
             
         - 이를 활용해 마우스 스크롤 입력을 받아 초점거리 f_len를 조절하여 확대/축소를 구현해봄
         - OpenGL에서 principal point는 항상 정렬되어 있으므로 px, py는 모두 0으로 처리함
